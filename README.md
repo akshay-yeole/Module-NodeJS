@@ -62,3 +62,56 @@ npm -v
     ```sh
     npm run start
     ```
+
+## Modules in NodeJS
+Moduling is nothing but breaking our code into multiple chunks.
+
+### Way 1
+Create a file `greet.js` and add the following code:
+```js
+function Greet() {
+  return `Welcome to the world of Node.js`;
+} 
+module.exports = Greet; 
+```
+
+In `hello.js` file:
+```js
+const greet = require("./greet");
+console.log('way 1', greet() );
+```
+
+### Way 2
+Create a file `greet.js` and add the following code:
+```js
+function Greet() {
+  return `Welcome to the world of Node.js`;
+} 
+
+module.exports = {
+   GreetUser: Greet
+};
+```
+
+In `hello.js` file:
+```js
+const { GreetUser } = require("./greet");
+console.log('way 2', GreetUser() );
+```
+
+### Way 3
+Create a file `greet.js` and add the following code:
+```js
+exports.displayMessage = (name) => 'Welcome, ' + name;
+```
+
+In `hello.js` file:
+```js
+const { displayMessage } = require("./greet");
+console.log('way 3', displayMessage('John Doe') );
+```
+
+You can also use built-in Node.js modules. For example:
+```js
+const http = require("http");
+```
