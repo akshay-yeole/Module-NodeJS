@@ -1,0 +1,12 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "- Ensure that Node.js is installed on your system. [Download Node.js](https://nodejs.org/en).\r - Code Editor: VS Code (Recommended). [Download VS Code](https://code.visualstudio.com/).",
+  "main": "hello.js",
+  "scripts": {
+    "start":"node hello.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
