@@ -168,3 +168,35 @@ fs.cpSync('demo.txt', 'demo2.txt');
 ```js
 fs.mkdirSync('folder-name-here');
 ```
+
+## How NodeJS works ?
+Request  -> Event Queue -> Event Loop -> Process -> Response     
+
+Event loop checks wether request is blocking or not and it process accordingly.
+
+Example :
+
+```js
+console.log("1");
+console.log("2");
+const fileData = fs.readFileSync('demo.txt', 'utf8');
+console.log(fileData);
+console.log("3");
+```
+
+Output
+```
+1
+2
+3
+Hello World
+```
+
+Default we have 4 workers in Thread pool. We can increase threads and it depends on your cpu cores.
+
+#### Get count of CPU cores in your system : 
+```js
+const os = require('os');
+const count = os.cpus().length;
+console.log(`Total cores are :: ${count}`);
+```

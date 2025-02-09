@@ -27,4 +27,9 @@ const fs = require('fs');
 //fs.cpSync('demo.txt', 'demo2.txt');
 
 //Make Directory Sync
-fs.mkdirSync('newFolder');
+//fs.mkdirSync('newFolder');
+
+//Check cpu cores in your system
+const os = require('os');
+const count = os.cpus().length;
+console.log(`Total cores are :: ${count}`);
