@@ -226,3 +226,38 @@ server.listen(3000, () => {
 - Now run command `npm run start`.
 
 - Open browser and hit URL `localhost:3000`. Here you will see the output.
+
+## Handling URLs 
+- We can configure URLs so that we can provide exact responses.
+
+- Create folder and run command `npm init`. 
+
+- Create Server and return responses
+```js
+const http = require("http");
+const url = require("url");
+
+const server = http.createServer((req, res) => {
+  switch (req.url) {
+    case "/":
+      res.end("Hello, World!");
+      break;
+    case "/about":
+      res.end("About Us");
+      break;
+    case "/contact":
+      res.end("Contact Us");
+      break;
+    default:
+      res.end("Page Not Found");
+  }
+});
+
+server.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
+```
+
+- Now add command `"start": "node index.js",` in `package.json` file and run command `npm run start`.
+
+- Open web page and hit URL `localhost:3000/about`. It should display `About Us` text.
