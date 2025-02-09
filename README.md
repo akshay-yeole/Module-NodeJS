@@ -169,13 +169,12 @@ fs.cpSync('demo.txt', 'demo2.txt');
 fs.mkdirSync('folder-name-here');
 ```
 
-## How NodeJS works ?
+## How NodeJS works?
 Request  -> Event Queue -> Event Loop -> Process -> Response     
 
-Event loop checks wether request is blocking or not and it process accordingly.
+Event loop checks whether request is blocking or not and it processes accordingly.
 
-Example :
-
+Example:
 ```js
 console.log("1");
 console.log("2");
@@ -184,7 +183,7 @@ console.log(fileData);
 console.log("3");
 ```
 
-Output
+Output:
 ```
 1
 2
@@ -192,11 +191,38 @@ Output
 Hello World
 ```
 
-Default we have 4 workers in Thread pool. We can increase threads and it depends on your cpu cores.
+By default, we have 4 workers in the Thread pool. We can increase threads and it depends on your CPU cores.
 
-#### Get count of CPU cores in your system : 
+#### Get count of CPU cores in your system:
 ```js
 const os = require('os');
 const count = os.cpus().length;
 console.log(`Total cores are :: ${count}`);
 ```
+
+## Creating Server in NodeJS
+
+- Create a folder `demo-server-app` and run command `npm init`.  
+- Now create `index.js` file and add server creation code.
+```js
+const http = require("http");
+
+//Create a server object
+const server = http.createServer((req, res) => {
+  res.end("Hello world");
+});
+
+//Configure the server to listen on port 3000
+server.listen(3000, () => {
+  console.log("Server is up and running on port : 3000");
+});
+```
+
+- Add command inside `package.json` file.
+```json
+"start": "node index.js",
+```
+
+- Now run command `npm run start`.
+
+- Open browser and hit URL `localhost:3000`. Here you will see the output.
