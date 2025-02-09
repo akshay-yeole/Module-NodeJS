@@ -115,3 +115,56 @@ You can also use built-in Node.js modules. For example:
 ```js
 const http = require("http");
 ```
+
+## File Handling in NodeJS
+Create a `file.js` file and import the `fs` module/package.
+
+### Write File Sync
+```js
+const fs = require('fs');
+fs.writeFileSync('demo.txt', 'Hello, world!');
+```
+Now run the command `node file.js` so that `writeFileSync` will create the file and add content to it.
+
+### Write File Async
+```js
+fs.writeFile(
+    'demo.txt', 'Hello, world!', 
+    (err) => { if (err) throw err;}
+);
+```
+
+### Read File Sync
+```js
+const fileData = fs.readFileSync('demo.txt', 'utf8');
+console.log(fileData);
+```
+
+### Read File Async
+```js
+fs.readFile(
+    'demo.txt', 
+    'utf8', 
+    (err, result) => {
+     if (err) 
+        throw err;
+     console.log(result);
+});
+```
+
+### Append File Sync
+```js
+fs.appendFileSync('demo.txt', '. Just now added this line');
+const fileData = fs.readFileSync('demo.txt', 'utf8');
+console.log(fileData);
+```
+
+### Copy File
+```js
+fs.cpSync('demo.txt', 'demo2.txt');
+```
+
+### Make Directory Sync
+```js
+fs.mkdirSync('folder-name-here');
+```
