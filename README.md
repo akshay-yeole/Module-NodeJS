@@ -14,9 +14,9 @@ node --version
 To start Node.js, follow these steps:
 1. Open your terminal.
 2. Enter the following command to start Node.js:
-    ```sh
-    node
-    ```
+  ```sh
+  node
+  ```
 3. Now you can write and execute code inside the terminal.
 
 ## NPM
@@ -27,19 +27,19 @@ npm -v
 
 ## Hello World Code
 1. Create a folder `hello-world` and open it in VS Code. For example, go inside that folder and run the command:
-    ```sh
-    code .
-    ```
+  ```sh
+  code .
+  ```
 2. Create a `hello.js` file.
 3. Write the following code in `hello.js`:
-    ```js
-    console.log('Welcome to Hello World');
-    ```
+  ```js
+  console.log('Welcome to Hello World');
+  ```
 4. To run this code, open the terminal and run the command:
-    ```sh
-    node hello.js
-    ```
-    It will display **Welcome to Hello World**.
+  ```sh
+  node hello.js
+  ```
+  It will display **Welcome to Hello World**.
 
 ## Working with NPM
 - `npm init` is used to create a template which is used to run our application.
@@ -55,13 +55,13 @@ npm -v
   - `license`: (ISC)
 
 - Now add the below command in the `scripts` section of `package.json` file:
-    ```json
-    "start": "node hello.js"
-    ```
+  ```json
+  "start": "node hello.js"
+  ```
 - Run the command below. It will display **Welcome to Hello World**:
-    ```sh
-    npm run start
-    ```
+  ```sh
+  npm run start
+  ```
 
 ## Modules in NodeJS
 Moduling is nothing but breaking our code into multiple chunks.
@@ -129,8 +129,8 @@ Now run the command `node file.js` so that `writeFileSync` will create the file 
 ### Write File Async
 ```js
 fs.writeFile(
-    'demo.txt', 'Hello, world!', 
-    (err) => { if (err) throw err;}
+  'demo.txt', 'Hello, world!', 
+  (err) => { if (err) throw err;}
 );
 ```
 
@@ -143,12 +143,12 @@ console.log(fileData);
 ### Read File Async
 ```js
 fs.readFile(
-    'demo.txt', 
-    'utf8', 
-    (err, result) => {
-     if (err) 
-        throw err;
-     console.log(result);
+  'demo.txt', 
+  'utf8', 
+  (err, result) => {
+   if (err) 
+    throw err;
+   console.log(result);
 });
 ```
 
@@ -239,25 +239,39 @@ const url = require("url");
 
 const server = http.createServer((req, res) => {
   switch (req.url) {
-    case "/":
-      res.end("Hello, World!");
-      break;
-    case "/about":
-      res.end("About Us");
-      break;
-    case "/contact":
-      res.end("Contact Us");
-      break;
-    default:
-      res.end("Page Not Found");
+  case "/":
+    res.end("Hello, World!");
+    break;
+  case "/about":
+    res.end("About Us");
+    break;
+  case "/contact":
+    res.end("Contact Us");
+    break;
+  default:
+    res.end("Page Not Found");
   }
 });
 
 server.listen(3000, () => {
-    console.log("Server is running on port 3000");
+  console.log("Server is running on port 3000");
 });
 ```
 
 - Now add command `"start": "node index.js",` in `package.json` file and run command `npm run start`.
 
 - Open web page and hit URL `localhost:3000/about`. It should display `About Us` text.
+
+- For url's we need to use url package. [url package link](https://www.npmjs.com/package/url)
+- we need to run command `npm i url`.
+- Now update code.
+```js
+case "/contact":
+  const userName = parsedUrl.query.uname;
+  console.log(parsedUrl);
+  res.end("Contact Us : " + userName);
+break;
+```
+- Open browser and hit url `http://localhost:3000/contact?uname=test`. Now you will get ouput like `Contact Us : test`.
+
+> **Tip:** If your project doesn't have a `.gitignore` file, it will show a lot of changes. To handle this, create a `.gitignore` file at the root level of the project and add `node_modules/` inside it.
