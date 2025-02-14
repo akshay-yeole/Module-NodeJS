@@ -337,25 +337,63 @@ if (req.method === "GET") {
 
 ## ExpressJS
 
-- we need to run command `npm i express` so that express js will be available in our application.
+- We need to run command `npm i express` so that express js will be available in our application.
 
 - Refer below code to create a simple expessJS app.
-```js
-const express = require("express");
 
-// Create an express app
-const app = express();
+  ```js
+  const express = require("express");
 
-// Define a route for the GET method
-app.get("/", (req, res) => {
+  // Create an express app
+  const app = express();
+
+  // Define a route for the GET method
+  app.get("/", (req, res) => {
     res.send("This is a GET request");
-});
+  });
 
-// Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
-```
+  // Start the server
+  app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+  });
+  ```
 
 ## REST Api
 
+| Method | Endpoint       | Description              |
+|--------|----------------|--------------------------|
+| POST   | /api/users     | Create a user            |
+| GET    | /api/users     | Get all users            |
+| GET    | /api/users/:id | Get a single user by ID  |
+| PUT    | /api/users/:id | Update a user            |
+| DELETE | /api/users/:id | Delete a user            |
+
+## Implementation
+- create a folder and install below modules.
+  - express - to create app
+  - nodemon - to auto build app
+  - mongoose - for database connectivity
+
+- Create index.js file and add below code for database connection.
+```js
+const mongoose = require("mongoose");
+
+mongoose.connect("connection string for mongodb") 
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.log("Error connecting to MongoDB", error);
+  });;
+```
+### Get Users : 
+### Get User By Id :
+
+### Add User :
+
+### Update User :
+
+### Delete User : 
+
+> **Tip:** I have added postman collection and envrionment file for above api endpoints. Please refer Postman folder for it.
+ 
