@@ -1,5 +1,23 @@
 # Module-NodeJS
 
+## Index
+
+- [Prerequisites](#prerequisites)
+- [Verify Node.js Installation](#verify-nodejs-installation)
+- [Node.js](#nodejs)
+- [NPM](#npm)
+- [Hello World Code](#hello-world-code)
+- [Working with NPM](#working-with-npm)
+- [Modules in NodeJS](#modules-in-nodejs)
+- [File Handling in NodeJS](#file-handling-in-nodejs)
+- [How NodeJS works?](#how-nodejs-works)
+- [Creating Server in NodeJS](#creating-server-in-nodejs)
+- [Handling URLs](#handling-urls)
+- [Http Methods](#http-methods)
+- [ExpressJS](#expressjs)
+- [REST Api](#rest-api)
+- [Implementation](#implementation)
+
 ## Prerequisites
 
 - Ensure Node.js is installed on your system. [Download Node.js](https://nodejs.org/en).
