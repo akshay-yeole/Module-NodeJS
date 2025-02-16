@@ -348,11 +348,11 @@ if (req.method === "GET") {
 
 | Method | Endpoint       | Description              |
 |--------|----------------|--------------------------|
-| POST   | /api/users     | Create a user            |
-| GET    | /api/users     | Get all users            |
-| GET    | /api/users/:id | Get a single user by ID  |
-| PUT    | /api/users/:id | Update a user            |
-| DELETE | /api/users/:id | Delete a user            |
+| [POST](#add-user)   | /api/users     | Create a user            |
+| [GET](#get-users)    | /api/users     | Get all users            |
+| [GET](#get-user-by-id)    | /api/users/:id | Get a single user by ID  |
+| [PUT](#update-user)    | /api/users/:id | Update a user            |
+| [DELETE](#delete-user) | /api/users/:id | Delete a user            |
 
 ## Implementation
 
