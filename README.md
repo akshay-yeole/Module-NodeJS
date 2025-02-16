@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-- Ensure that Node.js is installed on your system. [Download Node.js](https://nodejs.org/en).
-- Code Editor: VS Code (Recommended). [Download VS Code](https://code.visualstudio.com/).
+- Ensure Node.js is installed on your system. [Download Node.js](https://nodejs.org/en).
+- Recommended Code Editor: VS Code. [Download VS Code](https://code.visualstudio.com/).
 
 ## Verify Node.js Installation
 
-To verify the installed version of Node.js, run the following command in your terminal:
+To check the installed version of Node.js, run:
 
 ```sh
 node --version
@@ -15,20 +15,20 @@ node --version
 
 ## Node.js
 
-To start Node.js, follow these steps:
+To start Node.js:
 
 1. Open your terminal.
-2. Enter the following command to start Node.js:
+2. Run:
 
   ```sh
   node
   ```
 
-3. Now you can write and execute code inside the terminal.
+3. You can now write and execute code in the terminal.
 
 ## NPM
 
-NPM is used to install packages and use them in your code. To verify the installed version of NPM, run the following command in your terminal:
+NPM is used to install packages. To check the installed version of NPM, run:
 
 ```sh
 npm -v
@@ -36,20 +36,20 @@ npm -v
 
 ## Hello World Code
 
-1. Create a folder `hello-world` and open it in VS Code. For example, go inside that folder and run the command:
+1. Create a folder `hello-world` and open it in VS Code:
 
   ```sh
   code .
   ```
 
 2. Create a `hello.js` file.
-3. Write the following code in `hello.js`:
+3. Add the following code to `hello.js`:
 
   ```js
   console.log('Welcome to Hello World');
   ```
 
-4. To run this code, open the terminal and run the command:
+4. To run this code, open the terminal and run:
 
   ```sh
   node hello.js
@@ -59,37 +59,29 @@ npm -v
 
 ## Working with NPM
 
-- `npm init` is used to create a template which is used to run our application.
-- We need to pass a few data and press enter to complete it:
-  - `package name`: (any name you can give)
-  - `version`: no need
-  - `description`: no need
-  - `entry point`: file which you want (hello.js). Default is index.js. Once the file gets created, go to that file and replace index with hello.
-  - `test command`: no need
-  - `git repository`: no need
-  - `keywords`: no need
-  - `author`: no need
-  - `license`: (ISC)
-
-- Now add the below command in the `scripts` section of `package.json` file:
+- Use `npm init` to create a template for your application.
+- Follow the prompts to complete the setup.
+- Add the following command in the `scripts` section of `package.json`:
 
   ```json
   "start": "node hello.js"
   ```
 
-- Run the command below. It will display **Welcome to Hello World**:
+- Run:
 
   ```sh
   npm run start
   ```
 
+  It will display **Welcome to Hello World**.
+
 ## Modules in NodeJS
 
-Moduling is nothing but breaking our code into multiple chunks.
+Moduling involves breaking code into multiple chunks.
 
 ### Way 1
 
-Create a file `greet.js` and add the following code:
+Create `greet.js`:
 
 ```js
 function Greet() {
@@ -98,7 +90,7 @@ function Greet() {
 module.exports = Greet; 
 ```
 
-In `hello.js` file:
+In `hello.js`:
 
 ```js
 const greet = require("./greet");
@@ -107,7 +99,7 @@ console.log('way 1', greet() );
 
 ### Way 2
 
-Create a file `greet.js` and add the following code:
+Create `greet.js`:
 
 ```js
 function Greet() {
@@ -119,7 +111,7 @@ module.exports = {
 };
 ```
 
-In `hello.js` file:
+In `hello.js`:
 
 ```js
 const { GreetUser } = require("./greet");
@@ -128,20 +120,20 @@ console.log('way 2', GreetUser() );
 
 ### Way 3
 
-Create a file `greet.js` and add the following code:
+Create `greet.js`:
 
 ```js
 exports.displayMessage = (name) => 'Welcome, ' + name;
 ```
 
-In `hello.js` file:
+In `hello.js`:
 
 ```js
 const { displayMessage } = require("./greet");
 console.log('way 3', displayMessage('John Doe') );
 ```
 
-You can also use built-in Node.js modules. For example:
+You can also use built-in Node.js modules:
 
 ```js
 const http = require("http");
@@ -149,7 +141,7 @@ const http = require("http");
 
 ## File Handling in NodeJS
 
-Create a `file.js` file and import the `fs` module/package.
+Create `file.js` and import the `fs` module.
 
 ### Write File Sync
 
@@ -158,7 +150,7 @@ const fs = require('fs');
 fs.writeFileSync('demo.txt', 'Hello, world!');
 ```
 
-Now run the command `node file.js` so that `writeFileSync` will create the file and add content to it.
+Run `node file.js` to create the file and add content.
 
 ### Write File Async
 
@@ -211,9 +203,9 @@ fs.mkdirSync('folder-name-here');
 
 ## How NodeJS works?
 
-Request  -> Event Queue -> Event Loop -> Process -> Response     
+Request -> Event Queue -> Event Loop -> Process -> Response
 
-Event loop checks whether request is blocking or not and it processes accordingly.
+The event loop checks if the request is blocking and processes it accordingly.
 
 Example:
 
@@ -234,9 +226,9 @@ Output:
 Hello World
 ```
 
-By default, we have 4 workers in the Thread pool. We can increase threads and it depends on your CPU cores.
+By default, there are 4 workers in the Thread pool. The number of threads can be increased based on CPU cores.
 
-#### Get count of CPU cores in your system:
+#### Get count of CPU cores:
 
 ```js
 const os = require('os');
@@ -246,39 +238,36 @@ console.log(`Total cores are :: ${count}`);
 
 ## Creating Server in NodeJS
 
-- Create a folder `demo-server-app` and run command `npm init`.  
-- Now create `index.js` file and add server creation code.
+- Create a folder `demo-server-app` and run `npm init`.
+- Create `index.js` and add server creation code:
 
   ```js
   const http = require("http");
 
-  //Create a server object
   const server = http.createServer((req, res) => {
     res.end("Hello world");
   });
 
-  //Configure the server to listen on port 3000
   server.listen(3000, () => {
     console.log("Server is up and running on port : 3000");
   });
   ```
 
-- Add command inside `package.json` file.
+- Add the following command in `package.json`:
 
   ```json
   "start": "node index.js",
   ```
 
-- Now run command `npm run start`.
-
-- Open browser and hit URL `localhost:3000`. Here you will see the output.
+- Run `npm run start`.
+- Open browser and go to `localhost:3000` to see the output.
 
 ## Handling URLs 
 
-We can configure URLs so that we can provide exact responses.
+Configure URLs to provide specific responses.
 
-- Create folder and run command `npm init`. 
-- Create Server and return responses
+- Create a folder and run `npm init`.
+- Create a server and return responses:
 
   ```js
   const http = require("http");
@@ -305,11 +294,11 @@ We can configure URLs so that we can provide exact responses.
   });
   ```
 
-- Now add command `"start": "node index.js",` in `package.json` file and run command `npm run start`.
-- Open web page and hit URL `localhost:3000/about`. It should display `About Us` text.
-- For url's we need to use url package. [url package link](https://www.npmjs.com/package/url)
-- We need to run command `npm i url`.
-- Now update code.
+- Add `"start": "node index.js",` in `package.json` and run `npm run start`.
+- Open `localhost:3000/about` to see `About Us`.
+- Use the `url` package. [url package link](https://www.npmjs.com/package/url)
+- Run `npm i url`.
+- Update code:
 
   ```js
   case "/contact":
@@ -319,15 +308,15 @@ We can configure URLs so that we can provide exact responses.
   break;
   ```
 
-- Open browser and hit url `http://localhost:3000/contact?uname=test`. Now you will get output like `Contact Us : test`.
+- Open `http://localhost:3000/contact?uname=test` to see `Contact Us : test`.
 
-> **Tip:** If your project doesn't have a `.gitignore` file, it will show a lot of changes. To handle this, create a `.gitignore` file at the root level of the project and add `node_modules/` inside it.
+> **Tip:** Create a `.gitignore` file at the root level of the project and add `node_modules/` to it.
 
 ## Http Methods
 
 #### GET Request
 
-To filter request we can use `req.method` which will return http request type ` GET | POST | PUT | DELETE ` and we will be able to handle request accordingly.
+To filter requests, use `req.method` to handle `GET | POST | PUT | DELETE` requests.
 
 ```js
 if (req.method === "GET") {
@@ -337,22 +326,19 @@ if (req.method === "GET") {
 
 ## ExpressJS
 
-- We need to run command `npm i express` so that express js will be available in our application.
+- Run `npm i express` to install Express.js.
 
-- Refer below code to create a simple expessJS app.
+- Create a simple ExpressJS app:
 
   ```js
   const express = require("express");
 
-  // Create an express app
   const app = express();
 
-  // Define a route for the GET method
   app.get("/", (req, res) => {
     res.send("This is a GET request");
   });
 
-  // Start the server
   app.listen(3000, () => {
     console.log("Server is running on port 3000");
   });
@@ -369,12 +355,14 @@ if (req.method === "GET") {
 | DELETE | /api/users/:id | Delete a user            |
 
 ## Implementation
-- create a folder and install below modules.
-  - express - to create app
-  - nodemon - to auto build app
-  - mongoose - for database connectivity
 
-- Create index.js file and add below code for database connection.
+- Create a folder and install the following modules:
+  - express
+  - nodemon
+  - mongoose
+
+- Create `index.js` and add database connection code:
+
 ```js
 const mongoose = require("mongoose");
 
@@ -384,16 +372,197 @@ mongoose.connect("connection string for mongodb")
   })
   .catch((error) => {
     console.log("Error connecting to MongoDB", error);
-  });;
+  });
 ```
-### Get Users : 
-### Get User By Id :
+> **Tip:** We need the following folder structure:
+>
+> ```
+> ├── controllers  [Here we have handlers]
+> ├── models       [Here we have models]
+> ├── routes       [Here we have routes defined]
+> └── core         [Here we have database connection code]
+> ```
 
-### Add User :
+### Get Users
 
-### Update User :
+1. **Create User Model:**
+  - Create a folder `models` and add `user.js`:
 
-### Delete User : 
+  ```js
+  const mongoose = require("mongoose");
 
-> **Tip:** I have added postman collection and envrionment file for above api endpoints. Please refer Postman folder for it.
- 
+  const userSchema = new mongoose.Schema({
+    firstname: {
+     type: String,
+     required: true,
+    },
+    lastname: {
+     type: String,
+     required: true,
+    },
+    email: {
+     type: String,
+     required: true,
+     unique: true,
+    },
+    job_title: {
+     type: String,
+    },
+  });
+
+  const User = mongoose.model("user", userSchema);
+  module.exports = User;
+  ```
+
+2. **Create User Controller:**
+  - Create a folder `controllers` and add `users.js`:
+
+  ```js
+  const User = require('../models/User');
+
+  async function handleGetAllUsers(req, res) {
+     const allUsers = await User.find({});
+     return res.status(200).json(allUsers);
+  }
+
+  module.exports = { handleGetAllUsers };
+  ```
+
+3. **Create User Routes:**
+  - Create a folder `routes` and add `user.js`:
+
+  ```js
+  const express = require("express");
+  const { handleGetAllUsers } = require("../controllers/users");
+  const router = express.Router();
+
+  router.route("/")
+    .get(handleGetAllUsers);
+
+  module.exports = router;
+  ```
+
+4. **Update Server Configuration:**
+  - Update `index.js`:
+
+  ```js
+  const express = require("express");
+  const userRouter = require("./routes/user");
+  const mongoose = require("mongoose");
+
+  const PORT = 3000;
+  const app = express();
+
+  mongoose.connect("mongodb://localhost:27017/nodejs-demo")
+    .then(() => {
+     console.log("Connected to MongoDB");
+    })
+    .catch((error) => {
+     console.log("Error connecting to MongoDB", error);
+    });
+
+  app.use(express.json());
+
+  app.use("/api/users", userRouter);
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+  ```
+
+### Get User By Id
+
+- Handler code:
+
+```js
+async function handleGetUserById(req, res) {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    return res.status(200).json(user);
+}
+```
+
+- Route code:
+
+```js
+router
+  .route("/:id")
+  .get(handleGetUserById);
+```
+
+### Add User
+
+- Handler code:
+
+```js
+async function handleCreateUser(req, res) {
+    const body = req.body;
+
+  if (!body.firstname || !body.lastname || !body.email) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+```
+
+- Route code:
+
+```js
+router.route("/")
+  .post(handleCreateUser);
+```
+
+### Update User
+
+- Handler code:
+
+```js
+async function handleUpdateUserById(req, res) {
+    try {
+        const updatedItem = await User.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+          runValidators: true,
+        });
+        if (!updatedItem) {
+          return res.status(404).json({ error: "Item not found" });
+        }
+        res.status(200).json({ message: "Item updated successfully", updatedItem });
+      } catch (error) {
+        console.log("Error: ", error);
+        res.status(500).json({ error: "Server error", details: error.message });
+      }
+}
+```
+
+- Route code:
+
+```js
+router
+  .route("/:id")
+  .put(handleUpdateUserById);
+```
+
+### Delete User
+
+- Handler code:
+
+```js
+async function handleDeleteUserById(req, res) {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (!deletedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+  
+    return res.status(204).json({ msg: "Deleted" });
+}
+```
+
+- Route code:
+
+```js
+router
+  .route("/:id")
+  .delete(handleDeleteUserById);
+```
+
+> **Tip:** Refer to the Postman folder for the postman collection and environment file for the above API endpoints.
