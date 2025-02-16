@@ -17,6 +17,7 @@
 - [ExpressJS](#expressjs)
 - [REST Api](#rest-api)
 - [Implementation](#implementation)
+- [Middlewares](#middlewares)
 
 ## Prerequisites
 
@@ -584,3 +585,50 @@ router
 ```
 
 > **Tip:** Refer to the Postman folder for the postman collection and environment file for the above API endpoints.
+
+## Middlewares 
+Middleware in Node.js refers to functions that execute during the request-response cycle in a web application. These functions can modify request and response objects, execute any code, and control the flow of execution.
+
+Middleware is commonly used in Express.js, the most popular Node.js web framework.
+
+### Implementation
+- Create an ExpressJS application (`index.js`):
+
+```js
+const express = require("express");
+const { requestLogs } = require("./middlewares");
+
+const PORT = 3000;
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(requestLogs("app-logs.txt"));
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+```
+
+- Here we have middleware `requestLogs` which will create logs inside `app-logs.txt` file. We have middleware `index.js` inside the `middlewares` folder:
+
+```js
+const fs = require("fs");
+
+function requestLogs(fileName) {
+  return (req, res, next) => {
+    fs.writeFile(
+      fileName,
+      `${new Date()} - ${req.method} - ${req.url}\n`,
+      { flag: "a" },
+      (err, data) => {
+        next();
+      }
+    );
+  };
+}
+
+module.exports = { requestLogs };
+```
+
+- When requests are coming to the server, it will log those inside the `app-logs` file.
