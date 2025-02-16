@@ -377,10 +377,10 @@ mongoose.connect("connection string for mongodb")
 > **Tip:** We need the following folder structure:
 >
 > ```
-> ├── controllers  [Here we have handlers]
-> ├── models       [Here we have models]
-> ├── routes       [Here we have routes defined]
-> └── core         [Here we have database connection code]
+> ├── controllers  [ Here we have handlers. ]
+> ├── models       [ Here we have models. ]
+> ├── routes       [ Here we have routes defined. ]
+> └── core         [ Here we have database connection code. ]
 > ```
 
 ### Get Users
